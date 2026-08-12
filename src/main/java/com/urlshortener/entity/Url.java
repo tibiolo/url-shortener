@@ -22,9 +22,9 @@ public class Url {
     @Column(nullable = false)
     private String originalUrl;
 
-    @Column(nullable = false, unique = true)
-    private String shortUrl;
+    @Column(nullable = false, unique = true, length = 10)
+    private String shortCode;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime expiresAt;
 }
