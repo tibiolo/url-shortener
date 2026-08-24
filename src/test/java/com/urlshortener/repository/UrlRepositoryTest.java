@@ -35,7 +35,7 @@ public class UrlRepositoryTest {
 
     @Test
     @DisplayName("Save url successfully")
-    void shouldSaveUrl() {
+    void should_SaveUrl() {
         Url url = new Url();
 
         url.setOriginalUrl("https://www.google.com/");
@@ -48,7 +48,7 @@ public class UrlRepositoryTest {
 
     @Test
     @DisplayName("Find url using shortcode successfully")
-    void shouldFindUrl_ByShortCode() {
+    void should_FindUrl_ByShortCode() {
         Url url = new Url();
 
         url.setOriginalUrl("https://www.google.com/");
@@ -64,7 +64,7 @@ public class UrlRepositoryTest {
 
     @Test
     @DisplayName("Return empty if shortcode doesn't exist")
-    void shouldReturnEmpty_IfShortCode_DoesNotExist() {
+    void should_ReturnEmpty_IfShortCode_DoesNotExist() {
         Optional<Url> result = urlRepository.findByShortCode("does not exist");
 
         assertThat(result).isEmpty();
@@ -72,7 +72,7 @@ public class UrlRepositoryTest {
 
     @Test
     @DisplayName("Return true if shortcode exists")
-    void shouldReturnTrue_IfShortCode_Exists() {
+    void should_ReturnTrue_IfShortCode_Exists() {
         Url url = new Url();
 
         url.setOriginalUrl("https://www.google.com/");
@@ -85,7 +85,7 @@ public class UrlRepositoryTest {
 
     @Test
     @DisplayName("Return false if shortcode doesn't exist")
-    void ReturnFalse_IfShortCode_DoesNotExist() {
+    void should_ReturnFalse_IfShortCode_DoesNotExist() {
         assertThat(urlRepository.existsByShortCode("does_not_exist")).isFalse();
     }
 
