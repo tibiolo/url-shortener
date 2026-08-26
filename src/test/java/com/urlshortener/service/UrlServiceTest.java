@@ -3,6 +3,7 @@ package com.urlshortener.service;
 import com.urlshortener.dto.CreateUrlRequestDto;
 import com.urlshortener.dto.UrlResponseDto;
 import com.urlshortener.entity.Url;
+import com.urlshortener.exception.UrlNotFoundException;
 import com.urlshortener.mapper.UrlMapper;
 import com.urlshortener.repository.UrlRepository;
 import com.urlshortener.util.ShortCodeGenerator;
@@ -100,7 +101,7 @@ public class UrlServiceTest {
 
         when(urlRepository.findByShortCode(shortCode)).thenReturn(Optional.empty());
 
-        assertThatThrownBy(() -> urlService.getUrl(shortCode)).isInstanceOf(RuntimeException.class).hasMessage("Url Not Found");
+        assertThatThrownBy(() -> urlService.getUrl(shortCode)).isInstanceOf(UrlNotFoundException.class).hasMessage("Url Not Found");
 
         verify(urlRepository).findByShortCode(shortCode);
     }

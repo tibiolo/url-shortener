@@ -3,6 +3,7 @@ package com.urlshortener.service;
 import com.urlshortener.dto.CreateUrlRequestDto;
 import com.urlshortener.dto.UrlResponseDto;
 import com.urlshortener.entity.Url;
+import com.urlshortener.exception.UrlNotFoundException;
 import com.urlshortener.mapper.UrlMapper;
 import com.urlshortener.repository.UrlRepository;
 import com.urlshortener.util.ShortCodeGenerator;
@@ -34,7 +35,7 @@ public class UrlService {
     }
 
     public Url getUrl(String shortCode) {
-        return urlRepository.findByShortCode(shortCode).orElseThrow(() -> new RuntimeException("Url Not Found"));
+        return urlRepository.findByShortCode(shortCode).orElseThrow(() -> new UrlNotFoundException("Url Not Found"));
     }
 
 }
