@@ -19,6 +19,7 @@ public class UrlController {
     private final UrlService urlService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public UrlResponseDto createUrl(@RequestBody CreateUrlRequestDto request) {
         return urlService.createUrl(request);
     }
